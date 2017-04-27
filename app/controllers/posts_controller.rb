@@ -1,13 +1,13 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all
-    @users = User.all
   end
 
   def show
-    @post = Post.find(params[:id].to_i)
-    puts "dfdfd"
-    # puts @post
+    @user = User.find(session[:user_id])
+    @post = Post.find(params[:id])
+    @comments = @post.comments
+    @comment = Comment.new
   end
 
   def new
@@ -16,7 +16,7 @@ class PostsController < ApplicationController
 
   def create
     @poster = User.find(session[:user_id])
-    @post = @poster.posts.new(title:params[:post][:title], content:params[:post][:content])
+    @post = @poster.posts.new(title:params[:post][:title])
     if @post.save
       flash[:notice] = "Your post was created successfully."
       # redirect_to root_path
