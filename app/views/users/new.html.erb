@@ -1,0 +1,19 @@
+<!-- <form class="" action="/users" method="post">
+  First Name: <input type="text" name="fname" value="">
+  Last Name: <input type="text" name="lname" value="">
+  Age: <input type="number" name="age" value="">
+  <input type="submit" name="" value="Submit">
+</form> -->
+
+<%= form_for User.new do |f| %>
+<%= f.label :email %>
+<%= f.text_field :email %>
+<%= f.label :password %>
+<%= f.text_field :password %>
+<%= f.label :fname %>
+<%= f.text_field :fname %>
+<%= f.label :lname %>
+<%= f.text_field :lname %>
+<%= f.label :age %>
+<%= f.number_field :age %>
+<%= f.submit %> <% end %>

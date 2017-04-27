@@ -1,0 +1,7 @@
+<h1>Post index</h1>
+
+<% @posts.each do |post| %>
+<h2>Title: <%= post.title %></h2>
+<p class="postContent"><%= post.content %></p>
+<strong>By: </strong><a href="/users/<%=post.user_id%>"><%= @users.find(post.user_id).fname%> <%= @users.find(post.user_id).lname %></a>
+<% end %>

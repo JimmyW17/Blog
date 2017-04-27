@@ -1,0 +1,9 @@
+<h1>Post new</h1>
+
+<%= form_for Post.new do |form| %>
+<%= form.label :title %>
+<%= form.text_field :title %>
+<%= form.label :content %>
+<%= form.text_field :content %>
+<%= form.submit %>
+<% end %>
