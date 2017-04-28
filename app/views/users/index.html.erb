@@ -1,9 +1,9 @@
-<%= link_to "Create User" ,"users/new"%>
+<%= link_to "Create User" ,"users/new", class:"body_link" %>
 
 <h1>Users:</h1>
 <% @users.each do |u| %>
   <%  if u.fname %>
-  <%= link_to "#{u.fname} #{u.lname}", user_path(u)%>
+  <%= link_to "#{u.fname} #{u.lname}", user_path(u), class: "body_link" %>
   <% else %>
   <%= link_to "Unknown", user_path(u) %>
   <% end %>

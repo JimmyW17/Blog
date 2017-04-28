@@ -3,11 +3,10 @@
 
 <% @posts.reverse_each do |post| %>
 <h2 class="post_title"> <%= link_to post.title, post_path(post) %></h2>
-<p>by <span><%= link_to "#{User.find(post.user_id).fname} #{User.find(post.user_id).lname}", user_path(post.user_id) %></span></p>
-<p><%= post.created_at %></p>
+<p>posted <%= distance_of_time_in_words(post.created_at, Time.now) %> ago by <span><%= link_to "#{User.find(post.user_id).fname} #{User.find(post.user_id).lname}", user_path(post.user_id) %></span></p>
 <%= link_to "Delete Post", post_path(post), method: :delete %>
 <% end %>
 
 <!-- distance_of_time_in_words(Time.now, TIme.now + 15.seconds) -->
 <!-- select_date(Time.today + 10.days) -->
-time_ago_in_words(3.minutes.from.now)
+<!-- time_ago_in_words(3.minutes.from.now) -->

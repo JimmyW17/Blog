@@ -28,8 +28,12 @@ nav {
   margin-bottom: 30px;
 }
 
-#main > a {
+#main a {
   color: #369;
+}
+
+#main h2 {
+  color: white;
 }
 
 body {
