@@ -2,3 +2,4 @@
 <strong>Email: </strong><%= @user.email%>
 <strong>Age: </strong><%= @user.age %><br>
 <strong>User ID: </strong><%= @user.id %>
+<%= link_to "Delete User", user_path(@user), method: :delete %>

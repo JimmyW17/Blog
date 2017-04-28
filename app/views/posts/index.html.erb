@@ -1,9 +1,8 @@
-<%= link_to "New Post", "posts/new" %>
-<h1>Post index</h1>
+<h1>Post index</h1><%= link_to "New Post", "posts/new" %>
 
 <% @posts.reverse_each do |post| %>
 <h2 class="post_title"> <%= link_to post.title, post_path(post) %></h2>
-<p>posted <%= distance_of_time_in_words(post.created_at, Time.now) %> ago by <span><%= link_to "#{User.find(post.user_id).fname} #{User.find(post.user_id).lname}", user_path(post.user_id) %></span></p>
+<p class="captions">posted <%= distance_of_time_in_words(post.created_at, Time.now) %> ago by <span><%= link_to "#{User.find(post.user_id).fname} #{User.find(post.user_id).lname}", user_path(post.user_id) %></span></p>
 <%= link_to "Delete Post", post_path(post), method: :delete %>
 <% end %>
 

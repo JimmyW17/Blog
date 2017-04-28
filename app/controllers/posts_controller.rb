@@ -4,7 +4,9 @@ class PostsController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:user_id])
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+    end
     @post = Post.find(params[:id])
     @comments = @post.comments
     @comment = Comment.new
@@ -16,7 +18,7 @@ class PostsController < ApplicationController
 
   def create
     @poster = User.find(session[:user_id])
-    @post = @poster.posts.new(params[:post])
+    @post = @poster.posts.new(post_params)
     if @post.save
       flash[:notice] = "Your post was created successfully."
       # redirect_to root_path
@@ -39,4 +41,10 @@ class PostsController < ApplicationController
       redirect_to posts_path(@post)
     end
   end
+
+  private
+
+    def post_params
+      params.require(:post).permit(:content,:title)
+    end
 end
