@@ -3,26 +3,31 @@
   <head>
     <title>Practice2</title>
     <%= csrf_meta_tags %>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <a href="/users">Users</a>
-    <a href="/posts">Posts</a>
-    <% if session[:user_id] %>
-    <a href="/users/<%=session[:user_id]%>">Profile</a>
-    <a href="/logout">Logout</a>
-    <% else %>
-    <a href="/login">Login</a>
-    <a href="/signup">Register</a>
-    <% end %>
-    <% if flash[:notice] %>
-    <div id="notice">
-      <% flash[:notice]%>
-    </div>
-    <% end %>
+    <nav>
+      | <a href="/">Home</a> |
+      <a href="/users">Users</a> |
+      <a href="/posts">Posts</a> |
+      <% if session[:user_id] %>
+      <a href="/users/<%=session[:user_id]%>">Profile</a> |
+      <a href="/logout">Logout</a> |
+      <% else %>
+      <a href="/login">Login</a> |
+      <a href="/signup">Register</a> |
+      <% end %>
+      <% if flash[:notice] %>
+      <div id="notice">
+        <% flash[:notice]%>
+      </div>
+      <% end %>
+    </nav>
+    <div id="main" class="container">
     <%= yield %>
+    </div>
   </body>
 </html>

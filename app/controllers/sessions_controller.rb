@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    puts 'SessionEnd'*+'@'*45
+    puts 'SessionEnd'+'@'*45
     redirect_to root_path
   end
 end

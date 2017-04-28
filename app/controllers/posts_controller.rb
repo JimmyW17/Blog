@@ -16,7 +16,7 @@ class PostsController < ApplicationController
 
   def create
     @poster = User.find(session[:user_id])
-    @post = @poster.posts.new(title:params[:post][:title])
+    @post = @poster.posts.new(params[:post])
     if @post.save
       flash[:notice] = "Your post was created successfully."
       # redirect_to root_path
@@ -26,6 +26,17 @@ class PostsController < ApplicationController
       flash[:alert] = "There was a problem creating your post."
       puts '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@FAIL'
       redirect_to posts_path
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      flash[:notice] = "Post destroyed"
+      redirect_to posts_path
+    else
+      flash[:alert] = "There was an issue deleting post"
+      redirect_to posts_path(@post)
     end
   end
 end

@@ -8,11 +8,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    # @user = User.new(params[:user])
+    @user = User.new(user_params)
     if @user.save
       flash[:notice] = "Your account was created successfully."
       # redirect_to root_path
-      redirect_to users_path
+      redirect_to users_path(@user)
     else
       flash[:alert] = "There was a problem saving your account."
       redirect_to users_path
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update = params[:user]
+    @user.update(user_params)
 
     if @user.save
       flash[:notice] = "Your account was updated successfully."
@@ -49,5 +50,11 @@ class UsersController < ApplicationController
       flash[:alert] = "An error occurred."
     end
     redirect_to users_path
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email,:password,:fname,:lname,:age)
   end
 end
