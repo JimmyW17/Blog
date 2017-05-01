@@ -20,13 +20,18 @@
       <a href="/login">Login</a> |
       <a href="/signup">Register</a> |
       <% end %>
-      <% if flash[:notice] %>
-      <div id="notice">
-        <% flash[:notice]%>
-      </div>
-      <% end %>
     </nav>
     <div id="main" class="container">
+      <div class="flashNotice">
+        <% if flash[:notice] %>
+        <%= flash[:notice] %>
+        <% end %>
+      </div>
+      <div class="flashAlert">
+        <% if flash[:alert] %>
+        <%= flash[:alert] %>
+        <% end %>
+      </div>
     <%= yield %>
     </div>
   </body>

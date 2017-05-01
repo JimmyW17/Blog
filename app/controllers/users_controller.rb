@@ -13,10 +13,10 @@ class UsersController < ApplicationController
     if @user.save
       flash[:notice] = "Your account was created successfully."
       # redirect_to root_path
-      redirect_to users_path(@user)
+      redirect_to root_path
     else
       flash[:alert] = "There was a problem saving your account."
-      redirect_to users_path
+      redirect_to root_path
     end
   end
 

@@ -20,6 +20,20 @@ nav {
   z-index: 2;
 }
 
+.flashNotice {
+  background-color: green;
+}
+
+.flashAlert {
+  background-color: red;
+}
+
+.flashNotice, .flashAlert {
+  text-align: center;
+  margin: 20px;
+  font-size: 30px;
+}
+
 #main {
   /*padding: 10px;*/
   background-color: white;
@@ -38,12 +52,15 @@ nav {
   /*color: white;*/
 }
 
+html {
+  font-family: 'Rubik', sans-serif;
+}
+
 body {
   background-image: url("block.jpg");
   background-color: black;
   background-color: black;
   color: white;
-  font-family: 'Rubik', sans-serif;
 }
 
 a {

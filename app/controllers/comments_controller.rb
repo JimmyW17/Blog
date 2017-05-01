@@ -17,7 +17,6 @@ class CommentsController < ApplicationController
       flash[:notice] = "Comment successfully added"
       user.comments << @comment
       redirect_to post_path(@post)
-
     else
       flash[:alert] = "Error posting comment"
       redirect_to post_path(@post)
